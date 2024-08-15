@@ -40,5 +40,5 @@ def countGoodSubstrings(s: str) -> int:
     return count
 
 
-print("Example 1:", countGoodSubstrings("xyzzaz"))  # 1()
+print("Example 1:", countGoodSubstrings("xyzzaz"))  # 1
 print("Example 2:", countGoodSubstrings("aababcabc"))  # 4
