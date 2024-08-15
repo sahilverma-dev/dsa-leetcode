@@ -30,18 +30,33 @@ from typing import List
 
 
 def removeDuplicates(nums: List[int]) -> int:
-    new_array = []
-    count = 0
-    for i in range(len(nums) - 1):
-        print(nums[i] == nums[i + 1])
-        if nums[i] == nums[i + 1]:
-            if count == 2:
-                count = 0
-                new_array.append(nums[i])
-            else:
-                count + 1
 
-    return new_array
+    # result = []
+
+    # for num in nums:
+    #     if result.count(num) < 2:
+    #         result.append(num)
+
+    # return result
+
+    left = 0
+    right = 0
+    n = len(nums)
+
+    while left < n:
+        count = 1
+
+        while left + 1 < n and nums[left] == nums[left + 1]:
+            left += 1
+            count += 1
+
+        for i in range(min(count, 2)):
+            nums[right] = nums[left]
+            right += 1
+
+        left += 1
+
+    return right
 
 
 print("Example 1:", removeDuplicates([1, 1, 1, 2, 2, 3]))  # 5, nums = [1,1,2,2,3,_]
