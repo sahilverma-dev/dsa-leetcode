@@ -15,15 +15,28 @@ from typing import List
 
 
 class NumArray:
-    # brure force
+    # brute force
+    # def __init__(self, nums: List[int]):
+    #     self.nums = nums
+
+    # def sumRange(self, left: int, right: int) -> int:
+    #     sum = 0
+    #     for k in range(left, right + 1):
+    #         sum += self.nums[k]
+    #     return sum
+
+    # prefix sum
     def __init__(self, nums: List[int]):
-        self.nums = nums
+        self.prefix_sum = []
+        sum = 0
+        for i in nums:
+            sum += i
+            self.prefix_sum.append(sum)
 
     def sumRange(self, left: int, right: int) -> int:
-        sum = 0
-        for k in range(left, right + 1):
-            sum += self.nums[k]
-        return sum
+        rSum = self.prefix_sum[right]
+        lSum = self.prefix_sum[left - 1] if left > 0 else 0
+        return rSum - lSum
 
 
 # Your NumArray object will be instantiated and called as such:
